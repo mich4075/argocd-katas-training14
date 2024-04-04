@@ -9,7 +9,7 @@ spec:
     namespace: student-14
   project: default
   source:
-    repoURL: https://github.com/mich4075/argocd-katas-training14/
+    repoURL: https://github.com/mich4075/argocd-katas-training14
     targetRevision: HEAD
     path: apps
   syncPolicy:
