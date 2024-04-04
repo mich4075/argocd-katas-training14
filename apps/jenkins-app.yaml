@@ -1,10 +1,11 @@
-project: default
-destination:
-  namespace: student-14
-  name: in-cluster
-syncPolicy:
-  automated: {}
-sources:
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: student-14-jenkins
+  namespace: argocd
+spec:
+  project: default
+  sources:
   - repoURL: 'https://charts.bitnami.com/bitnami'
     targetRevision: 12.4.0
     helm:
@@ -14,3 +15,10 @@ sources:
   - repoURL: 'https://github.com/mich4075/argocd-katas-training14'
     targetRevision: main
     ref: values
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: student-14
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
